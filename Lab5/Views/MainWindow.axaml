@@ -1,0 +1,80 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Lab5.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Lab5.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Lab5"
+        Width="716"
+        Height="500"
+        CanResize="False"
+        RequestedThemeVariant="Light"
+    >
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+
+    <DockPanel LastChildFill="True" Margin="10">
+        <StackPanel
+            Width="200"
+            DockPanel.Dock="Right"
+        >
+            <TextBlock>Command:</TextBlock>
+            <TextBox
+                Watermark="Enter command"
+                Width="200"
+                Text="{Binding Command}"
+            />
+            <Button
+                HorizontalAlignment="Right"
+                Margin="0 10"
+                Command="{Binding ExecuteCommand}"
+                IsEnabled="{Binding }"
+            >
+                Execute!
+            </Button>
+            <ListBox
+                ItemsSource="{Binding History}"
+            />
+        </StackPanel>
+        
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ItemsControl ItemsSource="{Binding Turtle.Path}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        </Canvas>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+        
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Line
+                            Stroke="{Binding Color}"
+                            Opacity="1"
+                            StartPoint="{Binding Start.Point}"
+                            EndPoint="{Binding End.Point}"
+                        ></Line>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
+                <Image
+                    Source="{Binding Turtle.Image}"
+                    Width="40"
+                    Height="40"
+                    RenderTransform="{Binding Turtle.Rotate}"
+                    Canvas.Left="{Binding Turtle.ActualX}"
+                    Canvas.Top="{Binding Turtle.ActualY}"
+                />
+            </Canvas>
+        </Grid>
+    </DockPanel>
+</Window>
