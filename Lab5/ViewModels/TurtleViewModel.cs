@@ -25,15 +25,23 @@ public class TurtleViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _t, value);
-            ActualX = value.X * 25 + 205;
-            ActualY = -value.Y * 25 + 205;
+            ActualX = value.X;
+            ActualY = value.Y;
             Rotate = $"rotate({-value.Direction % 360 + 90}deg)";
-            Image = value.Color switch
+            try
             {
-                PenColor.Black => new Bitmap(AssetLoader.Open(new Uri("avares://Lab5/Assets/turtle-black.png"))),
-                PenColor.Green => new Bitmap(AssetLoader.Open(new Uri("avares://Lab5/Assets/turtle-green.png"))),
-                _ => null!
-            };
+                Image = value.Color switch
+                {
+                    PenColor.Black => new Bitmap(AssetLoader.Open(new Uri("avares://Lab5/Assets/turtle-black.png"))),
+                    PenColor.Green => new Bitmap(AssetLoader.Open(new Uri("avares://Lab5/Assets/turtle-green.png"))),
+                    _ => null!
+                };
+            }
+            catch
+            {
+                Image = null!;
+            }
+
             Path.Clear();
             Path.AddRange(
                 (
@@ -58,13 +66,13 @@ public class TurtleViewModel : ViewModelBase
     public double ActualX
     {
         get => _actualX;
-        set => this.RaiseAndSetIfChanged(ref _actualX, value);
+        set => this.RaiseAndSetIfChanged(ref _actualX, value * 25 + 205);
     }
 
     public double ActualY
     {
         get => _actualY;
-        set => this.RaiseAndSetIfChanged(ref _actualY, value);
+        set => this.RaiseAndSetIfChanged(ref _actualY, -value * 25 + 205);
     }
 
     public string Rotate

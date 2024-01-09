@@ -2,4 +2,10 @@
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=CodeStyle/@EntryIndexedValue">Off</s:String>
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=NamingFilter/@EntryIndexedValue">Off</s:String>
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=SpellingFilter/@EntryIndexedValue">Off</s:String>
-	<s:Boolean x:Key="/Default/Environment/InlayHints/GeneralInlayHintsOptions/EnableInlayHints/@EntryValue">False</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/Environment/InlayHints/GeneralInlayHintsOptions/EnableInlayHints/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2a07262e_002D364a_002D418f_002D8fc7_002D718138301851/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PointViewModel_SetCoordinates_ConvertsToPxValues" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::459BB37A-5109-4749-9F67-6DBB4F510239::net8.0::Lab5Test.ViewModelTests.PointViewModel_SetCoordinates_ConvertsToPxValues&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::459BB37A-5109-4749-9F67-6DBB4F510239::net8.0::Lab5Test.ViewModelTests.TurtleViewModel_SetCoordinates_ConvertsToPxValues&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
